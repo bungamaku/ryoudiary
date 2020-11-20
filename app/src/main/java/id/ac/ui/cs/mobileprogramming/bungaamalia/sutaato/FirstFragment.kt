@@ -1,6 +1,7 @@
 package id.ac.ui.cs.mobileprogramming.bungaamalia.sutaato
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,18 +9,20 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class FirstFragment : Fragment() {
+    private lateinit var viewModel: CountdownViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        viewModel = ViewModelProvider(requireActivity()).get(CountdownViewModel::class.java)
         return inflater.inflate(R.layout.fragment_first, container, false)
     }
 
@@ -28,11 +31,11 @@ class FirstFragment : Fragment() {
 
         view.findViewById<Button>(R.id.start_button).setOnClickListener {
             val showValueTextView = view.findViewById<TextView>(R.id.textView_input)
-            val currentValue = showValueTextView.text.toString().toInt()
-            if (currentValue == 0) {
+            viewModel.currentValue = showValueTextView.text.toString().toInt()
+            if (viewModel.currentValue == 0) {
                 Toast.makeText(activity?.applicationContext, "Countdown can't start from 0!", Toast.LENGTH_SHORT).show()
             } else {
-                val action = FirstFragmentDirections.actionFirstFragmentToSecondFragment(currentValue)
+                val action = FirstFragmentDirections.actionFirstFragmentToSecondFragment()
                 findNavController().navigate(action)
             }
         }
@@ -48,21 +51,16 @@ class FirstFragment : Fragment() {
 
     private fun plusValue(view: View) {
         val showValueTextView = view.findViewById<TextView>(R.id.textView_input)
-        val valueString = showValueTextView.text.toString()
-        var value = valueString.toInt()
-        value++
-        showValueTextView.text = value.toString()
+        showValueTextView.text = viewModel.plusValue()
     }
 
     private fun minusValue(view: View) {
         val showValueTextView = view.findViewById<TextView>(R.id.textView_input)
-        val valueString = showValueTextView.text.toString()
-        var value = valueString.toInt()
+        var value = viewModel.currentValue
         if (value < 1) {
             Toast.makeText(activity?.applicationContext, "Seconds can't be negative!", Toast.LENGTH_SHORT).show()
         } else {
-            value--
+            showValueTextView.text = viewModel.minusValue()
         }
-        showValueTextView.text = value.toString()
     }
 }

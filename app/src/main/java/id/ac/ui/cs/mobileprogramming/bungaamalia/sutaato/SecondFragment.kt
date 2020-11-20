@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 
@@ -16,17 +17,16 @@ import androidx.navigation.fragment.navArgs
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class SecondFragment : Fragment() {
+    private lateinit var viewModel: CountdownViewModel
     var countDownOnGoing = false
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        viewModel = ViewModelProvider(requireActivity()).get(CountdownViewModel::class.java)
         return inflater.inflate(R.layout.fragment_second, container, false)
     }
-
-    private val args: SecondFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,7 +39,10 @@ class SecondFragment : Fragment() {
             }
         }
 
-        var value = args.randomArg.toLong()
+        var value = viewModel.currentValue.toLong()
+        val titleSecondText = getString(R.string.textview_title_second_text, value)
+        view.findViewById<TextView>(R.id.textView_title_second).text = titleSecondText
+
         value *= 1000
         startCountdown(value)
     }

@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         if (backPressedTimer + delayExit > System.currentTimeMillis()) {
             super.onBackPressed()
         } else {
-            Toast.makeText(this, "Press Back once again to exit!",
+            Toast.makeText(this, "Press once again to go back!",
                 Toast.LENGTH_SHORT).show()
         }
         backPressedTimer = System.currentTimeMillis()

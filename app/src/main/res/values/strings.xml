@@ -12,4 +12,5 @@
     <string name="start_button_text">Start!</string>
     <string name="seconds_text">R</string>
     <string name="title_text">Countdown in Sec</string>
+    <string name="textview_title_second_text">Counting down from %d</string>
 </resources>
