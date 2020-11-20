@@ -24,13 +24,12 @@ class FirstFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_first, container, false)
         viewModel = ViewModelProvider(requireActivity()).get(CountdownViewModel::class.java)
+        binding.viewModel = viewModel
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.viewModel = viewModel
 
         binding.startButton.setOnClickListener {
             val showValueTextView = binding.textViewInput
