@@ -16,30 +16,64 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(findViewById(R.id.toolbar))
-
-        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+        findViewById<Button>(R.id.plus_button_view).setOnClickListener {
+            plusValue()
+        }
+        findViewById<Button>(R.id.minus_button_view).setOnClickListener {
+            minusValue()
         }
         Toast.makeText(this, "STATE: ON_CREATE", Toast.LENGTH_SHORT).show()
         Log.i("ActivityLifecycle", "STATE: ON_CREATE")
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
+    fun plusValue() {
+        val valueTextView = findViewById<TextView>(R.id.value_view)
+        value = valueTextView.text.toString().toInt()
+        value++
+        valueTextView.text = value.toString()
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
-        }
+    fun minusValue() {
+        val valueTextView = findViewById<TextView>(R.id.value_view)
+        value = valueTextView.text.toString().toInt()
+        value--
+        valueTextView.text = value.toString()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Toast.makeText(this, "STATE: ON_START", Toast.LENGTH_SHORT).show()
+        Log.i("ActivityLifecycle", "STATE: ON_START")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Toast.makeText(this, "STATE: ON_RESUME", Toast.LENGTH_SHORT).show()
+        Log.i("ActivityLifecycle", "STATE: ON_RESUME")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Toast.makeText(this, "STATE: ON_PAUSE", Toast.LENGTH_SHORT).show()
+        Log.i("ActivityLifecycle", "STATE: ON_PAUSE")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Toast.makeText(this, "STATE: ON_STOP", Toast.LENGTH_SHORT).show()
+        Log.i("ActivityLifecycle", "STATE: ON_STOP")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Toast.makeText(this, "STATE: ON_RESTART", Toast.LENGTH_SHORT).show()
+        Log.i("ActivityLifecycle", "STATE: ON_RESTART")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Toast.makeText(this, "STATE: ON_DESTROY", Toast.LENGTH_SHORT).show()
+        Log.i("ActivityLifecycle", "STATE: ON_DESTROY")
     }
 
     override fun onBackPressed() {
