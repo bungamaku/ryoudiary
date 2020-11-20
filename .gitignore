@@ -220,6 +220,13 @@ $RECYCLE.BIN/
 *.ipr
 *.swp
 
+# Keystore files
+*.jks
+*.keystore
+
+# Google Services (e.g. APIs or Firebase)
+# google-services.json
+
 # Android Patch
 
 # External native build folder generated in Android Studio 2.2 and later
@@ -248,6 +255,7 @@ obj/
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
+.idea/jarRepositories.xml
 
 # OS-specific files
 .DS_Store

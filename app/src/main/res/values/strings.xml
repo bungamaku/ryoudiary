@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">Sutaato</string>
-    <string name="value_text">0</string>
-    <string name="minus_button_text">Minus</string>
-    <string name="plus_button_text">Plus</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="previous">Previous</string>
+
+    <string name="main_value">0</string>
+    <string name="minus_button_text">−</string>
+    <string name="plus_button_text">+</string>
+    <string name="start_button_text">Start!</string>
+    <string name="seconds_text">R</string>
+    <string name="title_text">Countdown in Sec</string>
 </resources>
