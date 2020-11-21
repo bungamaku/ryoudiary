@@ -1,4 +1,4 @@
-package id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.activity
+package id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary
 
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +8,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.R
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

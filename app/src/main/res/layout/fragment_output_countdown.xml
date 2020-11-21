@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimaryLight"
-        tools:context=".fragment.SecondFragment">
+        tools:context=".fragment.OutputCountdownFragment">
 
         <Button
             android:id="@+id/button_previous"

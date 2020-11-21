@@ -11,15 +11,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.R
-import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.databinding.FragmentSecondBinding
+import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.databinding.FragmentOutputCountdownBinding
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.viewmodel.CountdownViewModel
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class SecondFragment : Fragment() {
+class OutputCountdownFragment : Fragment() {
     private lateinit var viewModel: CountdownViewModel
-    private lateinit var binding: FragmentSecondBinding
+    private lateinit var binding: FragmentOutputCountdownBinding
     var countDownOnGoing = false
 
     override fun onCreateView(
@@ -27,7 +27,7 @@ class SecondFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater,
-            R.layout.fragment_second, container, false)
+            R.layout.fragment_output_countdown, container, false)
         viewModel = ViewModelProvider(requireActivity()).get(CountdownViewModel::class.java)
         binding.viewModel = viewModel
         return binding.root
@@ -38,19 +38,20 @@ class SecondFragment : Fragment() {
 
         binding.buttonPrevious.setOnClickListener {
             if (countDownOnGoing) {
-                Toast.makeText(activity?.applicationContext, "Countdown is still on going!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity?.applicationContext,
+                    "Countdown is still on going!", Toast.LENGTH_SHORT).show()
             } else {
                 findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
             }
         }
 
-        var value = viewModel.currentValue.toLong()
+        var value = viewModel.currentValue.value?.toLong()
+        binding.textViewTitleSecond.text = getString(R.string.textview_title_second_text, value)
 
-        val titleSecondText = getString(R.string.textview_title_second_text, value)
-        binding.textViewTitleSecond.text = titleSecondText
-
-        value *= 1000
-        startCountdown(value)
+        if (value != null) {
+            value *= 1000
+            startCountdown(value)
+        }
     }
 
     private fun startCountdown(seconds: Long) {
@@ -61,7 +62,8 @@ class SecondFragment : Fragment() {
             }
 
             override fun onFinish() {
-                Toast.makeText(activity?.applicationContext, "Countdown finished!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity?.applicationContext,
+                    "Countdown finished!", Toast.LENGTH_SHORT).show()
                 countDownOnGoing = false
             }
         }.start()
