@@ -1,4 +1,4 @@
-package id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary
+package id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.activity
 
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.R
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +18,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this,
+            R.layout.activity_main
+        )
         setSupportActionBar(binding.toolbar)
 
         binding.fab.setOnClickListener { view ->

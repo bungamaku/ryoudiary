@@ -1,4 +1,4 @@
-package id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary
+package id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -6,9 +6,7 @@ import androidx.lifecycle.ViewModel
 class CountdownViewModel : ViewModel() {
     var currentValue: Int = 0
     var mainValue: String = "0"
-    var titleText: String = "Countdown in Sec"
     var secondsText: String = "R"
-    var titleSecondText: String = "Counting down from %d"
 
     init {
         Log.i("CountDownViewModel", "CountDownViewModel created!")

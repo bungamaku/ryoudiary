@@ -1,4 +1,4 @@
-package id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary
+package id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.fragment
 
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -10,7 +10,9 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.R
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.databinding.FragmentSecondBinding
+import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.viewmodel.CountdownViewModel
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -24,7 +26,8 @@ class SecondFragment : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_second, container, false)
+        binding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_second, container, false)
         viewModel = ViewModelProvider(requireActivity()).get(CountdownViewModel::class.java)
         binding.viewModel = viewModel
         return binding.root

@@ -1,4 +1,4 @@
-package id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary
+package id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,10 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.FirstFragmentDirections
+import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.R
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.databinding.FragmentFirstBinding
+import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.viewmodel.CountdownViewModel
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -22,7 +25,8 @@ class FirstFragment : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_first, container, false)
+        binding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_first, container, false)
         viewModel = ViewModelProvider(requireActivity()).get(CountdownViewModel::class.java)
         binding.viewModel = viewModel
         return binding.root
@@ -37,7 +41,8 @@ class FirstFragment : Fragment() {
             if (viewModel.currentValue == 0) {
                 Toast.makeText(activity?.applicationContext, "Countdown can't start from 0!", Toast.LENGTH_SHORT).show()
             } else {
-                val action = FirstFragmentDirections.actionFirstFragmentToSecondFragment()
+                val action =
+                    FirstFragmentDirections.actionFirstFragmentToSecondFragment()
                 findNavController().navigate(action)
             }
         }
