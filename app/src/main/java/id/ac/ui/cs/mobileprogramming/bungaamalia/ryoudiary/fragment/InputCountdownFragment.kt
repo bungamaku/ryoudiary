@@ -39,7 +39,8 @@ class InputCountdownFragment : Fragment() {
 
         binding.startButton.setOnClickListener {
             if (viewModel.currentValue.value?.toInt() == 0) {
-                Toast.makeText(activity?.applicationContext, "Countdown can't start from 0!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity?.applicationContext,
+                    "Countdown can't start from 0!", Toast.LENGTH_SHORT).show()
             } else {
                 val action =
                     InputCountdownFragmentDirections.actionFirstFragmentToSecondFragment()
@@ -48,21 +49,22 @@ class InputCountdownFragment : Fragment() {
         }
 
         binding.plusButton.setOnClickListener {
-            plusValue(view)
+            plusValue()
         }
 
         binding.minusButton.setOnClickListener {
-            minusValue(view)
+            minusValue()
         }
     }
 
-    private fun plusValue(view: View) {
+    private fun plusValue() {
         binding.textViewInput.text = viewModel.plusValue()
     }
 
-    private fun minusValue(view: View) {
+    private fun minusValue() {
         if (viewModel.currentValue.value?.toInt()!! < 1) {
-            Toast.makeText(activity?.applicationContext, "Seconds can't be negative!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity?.applicationContext,
+                "Seconds can't be negative!", Toast.LENGTH_SHORT).show()
         } else {
             binding.textViewInput.text = viewModel.minusValue()
         }
