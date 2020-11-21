@@ -14,9 +14,6 @@ import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.R
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.databinding.FragmentInputCountdownBinding
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.viewmodel.CountdownViewModel
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class InputCountdownFragment : Fragment() {
     private lateinit var viewModel: CountdownViewModel
     private lateinit var binding: FragmentInputCountdownBinding
@@ -42,9 +39,8 @@ class InputCountdownFragment : Fragment() {
                 Toast.makeText(activity?.applicationContext,
                     "Countdown can't start from 0!", Toast.LENGTH_SHORT).show()
             } else {
-                val action =
-                    InputCountdownFragmentDirections.actionFirstFragmentToSecondFragment()
-                findNavController().navigate(action)
+                findNavController()
+                    .navigate(R.id.action_InputCountdownFragment_to_OutputCountdownFragment)
             }
         }
 

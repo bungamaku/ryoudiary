@@ -16,5 +16,5 @@ class Recipe(
 
     @ColumnInfo(name = "image") val image: String,
 
-    @ColumnInfo(name = "createdOn") val createdOn: Date
+    @ColumnInfo(name = "createdOn") val createdOn: String
 )

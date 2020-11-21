@@ -14,9 +14,6 @@ import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.R
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.databinding.FragmentOutputCountdownBinding
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.viewmodel.CountdownViewModel
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
 class OutputCountdownFragment : Fragment() {
     private lateinit var viewModel: CountdownViewModel
     private lateinit var binding: FragmentOutputCountdownBinding
@@ -41,7 +38,8 @@ class OutputCountdownFragment : Fragment() {
                 Toast.makeText(activity?.applicationContext,
                     "Countdown is still on going!", Toast.LENGTH_SHORT).show()
             } else {
-                findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+                findNavController()
+                    .navigate(R.id.action_OutputCountdownFragment_to_InputCountdownFragment)
             }
         }
 
