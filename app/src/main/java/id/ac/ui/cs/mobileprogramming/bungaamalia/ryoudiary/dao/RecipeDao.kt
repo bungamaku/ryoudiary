@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface RecipeDao {
-    @Query("SELECT * FROM recipe_table ORDER BY createdOn ASC")
+    @Query("SELECT * FROM recipe_table ORDER BY id ASC")
     fun getAllRecipes(): Flow<List<Recipe>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

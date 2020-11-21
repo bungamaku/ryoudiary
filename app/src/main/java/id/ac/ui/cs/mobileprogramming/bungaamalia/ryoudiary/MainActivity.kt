@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == recipeActivityRequestCode && resultCode == Activity.RESULT_OK) {
             intentData?.getStringExtra(RecipeActivity.EXTRA_REPLY)?.let { reply ->
-                val recipe = Recipe(2, reply, "test desc",
+                val recipe = Recipe(0, reply, "test desc",
                     "text image", "test date")
                 recipeViewModel.insertRecipe(recipe)
             }
