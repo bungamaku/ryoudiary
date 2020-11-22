@@ -2,22 +2,15 @@ package id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary
 
 import android.app.Activity
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.observe
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,11 +18,8 @@ import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.adapter.RecipeListAda
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.application.RecipesApplication
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.data.Recipe
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.databinding.ActivityMainBinding
-import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.fragment.InputCountdownFragment
-import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.fragment.RecipeListFragment
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.viewmodel.RecipeViewModel
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.viewmodel.RecipeViewModelFactory
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private val delayExit = 2000
