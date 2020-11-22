@@ -39,7 +39,7 @@ class OutputCountdownFragment : Fragment() {
                     "Countdown is still on going!", Toast.LENGTH_SHORT).show()
             } else {
                 findNavController()
-                    .navigate(R.id.action_OutputCountdownFragment_to_InputCountdownFragment)
+                    .navigate(R.id.action_OutputCountdownFragment_to_recipeListFragment)
             }
         }
 

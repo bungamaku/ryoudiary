@@ -20,14 +20,17 @@
         android:name="id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.fragment.OutputCountdownFragment"
         android:label="@string/output_countdown_fragment_label"
         tools:layout="@layout/fragment_output_countdown">
-
         <action
-            android:id="@+id/action_OutputCountdownFragment_to_InputCountdownFragment"
-            app:destination="@id/InputCountdownFragment" />
+            android:id="@+id/action_OutputCountdownFragment_to_recipeListFragment"
+            app:destination="@id/recipeListFragment" />
     </fragment>
     <fragment
         android:id="@+id/recipeListFragment"
         android:name="id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.fragment.RecipeListFragment"
         android:label="fragment_recipe_list"
-        tools:layout="@layout/fragment_recipe_list" />
+        tools:layout="@layout/fragment_recipe_list" >
+        <action
+            android:id="@+id/action_recipeListFragment_to_InputCountdownFragment"
+            app:destination="@id/InputCountdownFragment" />
+    </fragment>
 </navigation>

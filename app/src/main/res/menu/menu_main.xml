@@ -2,9 +2,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.MainActivity">
+
+    <item
+        android:id="@+id/InputCountdownFragment"
+        android:icon="@drawable/ic_baseline_timer_24"
+        android:title="@string/title_text"
+        app:showAsAction="ifRoom"/>
+
     <item
         android:id="@+id/action_settings"
-        android:orderInCategory="100"
+        android:orderInCategory="101"
         android:title="@string/action_settings"
         app:showAsAction="never" />
 </menu>

@@ -14,4 +14,5 @@
     <string name="recipe_button_save">Save</string>
     <string name="recipe_empty_not_saved">Recipe not saved because it\'s empty</string>
     <string name="recipe_add">Add recipe</string>
+    <string name="recipe_thumbnail">Recipe\'s thumbnail</string>
 </resources>

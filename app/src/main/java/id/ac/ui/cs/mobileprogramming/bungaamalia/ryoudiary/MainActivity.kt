@@ -2,6 +2,7 @@ package id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import com.google.android.material.snackbar.Snackbar
@@ -10,16 +11,25 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.observe
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.onNavDestinationSelected
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.adapter.RecipeListAdapter
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.application.RecipesApplication
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.data.Recipe
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.databinding.ActivityMainBinding
+import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.fragment.InputCountdownFragment
+import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.fragment.RecipeListFragment
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.viewmodel.RecipeViewModel
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.viewmodel.RecipeViewModelFactory
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private val delayExit = 2000
@@ -46,13 +56,10 @@ class MainActivity : AppCompatActivity() {
             recipes.let { adapter.submitList(it) }
         }
 
-        binding.fab.setOnClickListener { view ->
+        binding.fab.setOnClickListener {
             val intent = Intent(this@MainActivity, RecipeActivity::class.java)
             startActivityForResult(intent, recipeActivityRequestCode)
         }
-
-        Toast.makeText(this, "STATE: ON_CREATE", Toast.LENGTH_SHORT).show()
-        Log.i("ActivityLifecycle", "STATE: ON_CREATE")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
@@ -61,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == recipeActivityRequestCode && resultCode == Activity.RESULT_OK) {
             intentData?.getStringExtra(RecipeActivity.EXTRA_REPLY)?.let { reply ->
                 val recipe = Recipe(0, reply, "test desc",
-                    "text image", "test date")
+                    "test image uri string", "test date")
                 recipeViewModel.insertRecipe(recipe)
             }
         } else {
@@ -74,19 +81,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
-        }
+        val navController = findNavController(R.id.nav_host_fragment)
+        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
     }
 
     override fun onBackPressed() {
@@ -97,41 +98,5 @@ class MainActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT).show()
         }
         backPressedTimer = System.currentTimeMillis()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Toast.makeText(this, "STATE: ON_START", Toast.LENGTH_SHORT).show()
-        Log.i("ActivityLifecycle", "STATE: ON_START")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Toast.makeText(this, "STATE: ON_RESUME", Toast.LENGTH_SHORT).show()
-        Log.i("ActivityLifecycle", "STATE: ON_RESUME")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Toast.makeText(this, "STATE: ON_PAUSE", Toast.LENGTH_SHORT).show()
-        Log.i("ActivityLifecycle", "STATE: ON_PAUSE")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Toast.makeText(this, "STATE: ON_STOP", Toast.LENGTH_SHORT).show()
-        Log.i("ActivityLifecycle", "STATE: ON_STOP")
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Toast.makeText(this, "STATE: ON_RESTART", Toast.LENGTH_SHORT).show()
-        Log.i("ActivityLifecycle", "STATE: ON_RESTART")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Toast.makeText(this, "STATE: ON_DESTROY", Toast.LENGTH_SHORT).show()
-        Log.i("ActivityLifecycle", "STATE: ON_DESTROY")
     }
 }
