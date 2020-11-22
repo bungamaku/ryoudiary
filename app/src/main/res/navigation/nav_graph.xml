@@ -3,26 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/recipeListFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="id.ac.ui.cs.mobileprogramming.bungaamalia.sutaato.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/InputCountdownFragment"
+        android:name="id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.fragment.InputCountdownFragment"
+        android:label="@string/input_countdown_fragment_label"
+        tools:layout="@layout/fragment_input_countdown">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_InputCountdownFragment_to_OutputCountdownFragment"
+            app:destination="@id/OutputCountdownFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="id.ac.ui.cs.mobileprogramming.bungaamalia.sutaato.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
+        android:id="@+id/OutputCountdownFragment"
+        android:name="id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.fragment.OutputCountdownFragment"
+        android:label="@string/output_countdown_fragment_label"
+        tools:layout="@layout/fragment_output_countdown">
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_OutputCountdownFragment_to_recipeListFragment"
+            app:destination="@id/recipeListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipeListFragment"
+        android:name="id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.fragment.RecipeListFragment"
+        android:label="fragment_recipe_list"
+        tools:layout="@layout/fragment_recipe_list" >
+        <action
+            android:id="@+id/action_recipeListFragment_to_InputCountdownFragment"
+            app:destination="@id/InputCountdownFragment" />
     </fragment>
 </navigation>

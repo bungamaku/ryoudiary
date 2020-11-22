@@ -1,16 +1,18 @@
 <resources>
-    <string name="app_name">Ryou-diary</string>
+    <string name="app_name" translatable="false">Ryou-diary</string>
     <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="previous">Previous</string>
-
-    <string name="main_value">0</string>
-    <string name="minus_button_text">−</string>
-    <string name="plus_button_text">+</string>
+    <string name="input_countdown_fragment_label">Input Countdown Fragment</string>
+    <string name="output_countdown_fragment_label">Output Countdown Fragment</string>
+    <string name="minus_button_text" translatable="false">−</string>
+    <string name="plus_button_text" translatable="false">+</string>
     <string name="start_button_text">Start!</string>
-    <string name="seconds_text">R</string>
     <string name="title_text">Countdown in Sec</string>
     <string name="textview_title_second_text">Counting down from %d</string>
+    <string name="recipe_list_fragment">Recipe List Fragment</string>
+    <string name="recipe_name_placeholder">Recipe\'s name…</string>
+    <string name="recipe_button_save">Save</string>
+    <string name="recipe_empty_not_saved">Recipe not saved because it\'s empty</string>
+    <string name="recipe_add">Add recipe</string>
+    <string name="recipe_thumbnail">Recipe\'s thumbnail</string>
+    <string name="previous">Back Home</string>
 </resources>

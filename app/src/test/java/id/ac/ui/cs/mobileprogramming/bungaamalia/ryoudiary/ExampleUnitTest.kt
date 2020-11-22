@@ -1,4 +1,4 @@
-package id.ac.ui.cs.mobileprogramming.bungaamalia.sutaato
+package id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary
 
 import org.junit.Test
 

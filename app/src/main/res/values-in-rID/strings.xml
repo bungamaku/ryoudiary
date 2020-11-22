@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ryou-diary</string>
+    <string name="action_settings">Pengaturan</string>
+    <string name="input_countdown_fragment_label">Fragment Masukan Penghitung Waktu Mundur</string>
+    <string name="output_countdown_fragment_label">Fragment Penghitung Waktu Mundur</string>
+    <string name="previous">Kembali</string>
+    <string name="start_button_text">Mulai!</string>
+    <string name="title_text">Hitung mundur dalam detik</string>
+    <string name="textview_title_second_text">Hitung mundur dari %d</string>
+    <string name="recipe_list_fragment">Fragment Daftar Resep</string>
+    <string name="recipe_name_placeholder">Nama resep…</string>
+    <string name="recipe_button_save">Simpan</string>
+    <string name="recipe_empty_not_saved">Resep tidak dapat disimpan karena kosong</string>
+    <string name="recipe_add">Tambah resep</string>
+    <string name="recipe_thumbnail">Foto resep</string>
+</resources>
