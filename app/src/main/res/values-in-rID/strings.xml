@@ -17,4 +17,5 @@
     <string name="home_title_text">Yuk memasak!</string>
     <string name="home_list_button_text">Daftar Resep</string>
     <string name="home_countdown_button_text">Penghitung Waktu</string>
+    <string name="home_wifi_button_text">Pindai Wi-Fi</string>
 </resources>
