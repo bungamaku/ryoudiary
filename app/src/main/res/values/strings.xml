@@ -15,4 +15,7 @@
     <string name="recipe_add">Add recipe</string>
     <string name="recipe_thumbnail">Recipe\'s thumbnail</string>
     <string name="previous">Back Home</string>
+    <string name="home_title_text">Let\'s cook!</string>
+    <string name="home_list_button_text">Recipe List</string>
+    <string name="home_countdown_button_text">Countdown</string>
 </resources>

@@ -14,4 +14,7 @@
     <string name="recipe_empty_not_saved">Resep tidak dapat disimpan karena kosong</string>
     <string name="recipe_add">Tambah resep</string>
     <string name="recipe_thumbnail">Foto resep</string>
+    <string name="home_title_text">Yuk memasak!</string>
+    <string name="home_list_button_text">Daftar Resep</string>
+    <string name="home_countdown_button_text">Penghitung Waktu</string>
 </resources>
