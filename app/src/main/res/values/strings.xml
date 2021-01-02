@@ -21,4 +21,9 @@
     <string name="home_wifi_button_text">Scan Wi-Fi</string>
     <string name="wifi_textview_text" translatable="false" />
     <string name="permission_required_text">Sorry, permissions are required!</string>
+    <string name="home_internet_button_text">Check Internet</string>
+    <string name="notification_channel_id" translatable="false">0</string>
+    <string name="notification_title">Ryou-diary Countdown</string>
+    <string name="notification_channel_name" translatable="false">countdown</string>
+    <string name="notification_channel_description">Countdown is finished!</string>
 </resources>

@@ -18,4 +18,8 @@
     <string name="home_list_button_text">Daftar Resep</string>
     <string name="home_countdown_button_text">Penghitung Waktu</string>
     <string name="home_wifi_button_text">Pindai Wi-Fi</string>
+    <string name="permission_required_text">Maaf, izin dibutuhkan!</string>
+    <string name="home_internet_button_text">Periksa jaringan</string>
+    <string name="notification_title">Penghitung Waktu Ryou-diary</string>
+    <string name="notification_channel_description">Penghitung waktu selesai!</string>
 </resources>

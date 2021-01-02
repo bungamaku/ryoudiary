@@ -6,6 +6,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.net.wifi.WifiManager
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,6 +17,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -52,6 +55,17 @@ class HomeFragment : Fragment() {
         }
         binding.homeCountdownButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_InputCountdownFragment)
+        }
+
+        binding.homeInternetButton.setOnClickListener {
+            if (checkInternet()) {
+                Toast.makeText(activity?.applicationContext,
+                    "Internet connection is available", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                Toast.makeText(activity?.applicationContext,
+                    "Internet connection is not available", Toast.LENGTH_SHORT).show()
+            }
         }
 
         val wifiManager = activity?.applicationContext?.getSystemService(
@@ -150,6 +164,13 @@ class HomeFragment : Fragment() {
                     "Permission denied!", Toast.LENGTH_SHORT).show()
             }
         )
+    }
+
+    private fun checkInternet(): Boolean {
+        val cm = context?.getSystemService(
+            Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
+        return activeNetwork?.isConnectedOrConnecting == true
     }
 
 }
