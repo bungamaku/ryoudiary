@@ -26,4 +26,5 @@
     <string name="notification_title">Ryou-diary Countdown</string>
     <string name="notification_channel_name" translatable="false">countdown</string>
     <string name="notification_channel_description">Countdown is finished!</string>
+    <string name="home_animation_button_text">OpenGL Animation</string>
 </resources>

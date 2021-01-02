@@ -9,6 +9,7 @@ import android.content.pm.PackageManager
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.net.wifi.WifiManager
+import android.opengl.GLSurfaceView
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,15 +20,13 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.R
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.databinding.FragmentHomeBinding
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.service.RequestBinService
-import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.util.AppPermission
-import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.util.handlePermission
-import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.util.handlePermissionsResult
-import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.util.requestPermission
+import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.util.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -50,6 +49,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.homeAnimationButton.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_GLActivity2)
+        }
         binding.homeListButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_recipeListFragment)
         }

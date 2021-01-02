@@ -43,5 +43,12 @@
         <action
             android:id="@+id/action_homeFragment_to_InputCountdownFragment"
             app:destination="@id/InputCountdownFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_GLActivity2"
+            app:destination="@id/GLActivity2" />
     </fragment>
+    <activity
+        android:id="@+id/GLActivity2"
+        android:name="id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.GLActivity"
+        android:label="GLActivity" />
 </navigation>
