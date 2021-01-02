@@ -18,6 +18,9 @@ class InputCountdownFragment : Fragment() {
     private lateinit var viewModel: CountdownViewModel
     private lateinit var binding: FragmentInputCountdownBinding
 
+    private external fun nativePlus(currValue: Int): Int
+    private external fun nativeMinus(currValue: Int): Int
+
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -54,7 +57,8 @@ class InputCountdownFragment : Fragment() {
     }
 
     private fun plusValue() {
-        binding.textViewInput.text = viewModel.plusValue()
+        viewModel.currentValue.value = nativePlus(viewModel.currentValue.value?.toInt()!!)
+        binding.textViewInput.text = viewModel.currentValue.value.toString()
     }
 
     private fun minusValue() {
@@ -62,7 +66,14 @@ class InputCountdownFragment : Fragment() {
             Toast.makeText(activity?.applicationContext,
                 "Seconds can't be negative!", Toast.LENGTH_SHORT).show()
         } else {
-            binding.textViewInput.text = viewModel.minusValue()
+            viewModel.currentValue.value = nativeMinus(viewModel.currentValue.value?.toInt()!!)
+            binding.textViewInput.text = viewModel.currentValue.value.toString()
+        }
+    }
+
+    companion object {
+        init {
+            System.loadLibrary("native_countdown")
         }
     }
 }

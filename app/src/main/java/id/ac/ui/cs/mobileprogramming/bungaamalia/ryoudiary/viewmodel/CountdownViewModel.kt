@@ -16,16 +16,6 @@ class CountdownViewModel : ViewModel() {
         secondsText.value = "R"
     }
 
-    fun plusValue(): String {
-        currentValue.value = (currentValue.value)?.plus(1)
-        return currentValue.value.toString()
-    }
-
-    fun minusValue(): String {
-        currentValue.value = (currentValue.value)?.minus(1)
-        return currentValue.value.toString()
-    }
-
     override fun onCleared() {
         super.onCleared()
         Log.i("CountdownViewModel", "CountdownViewModel destroyed!")
