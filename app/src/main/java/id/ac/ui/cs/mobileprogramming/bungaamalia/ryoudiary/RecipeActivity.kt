@@ -60,6 +60,7 @@ class RecipeActivity : AppCompatActivity() {
                 replyIntent.putExtra(EXTRA_REPLY, recipeName)
                 setResult(Activity.RESULT_OK, replyIntent)
             }
+            (recyclerView.adapter as RecipeListAdapter).notifyDataSetChanged()
             finish()
         }
     }
