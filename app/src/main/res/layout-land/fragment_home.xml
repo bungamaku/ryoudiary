@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryLight"
+        tools:context=".fragment.HomeFragment">
+
+        <Button
+            android:id="@+id/home_countdown_button"
+            android:layout_width="190dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/colorSecondary"
+            android:text="@string/home_countdown_button_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.249"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_list_button" />
+
+        <Button
+            android:id="@+id/home_internet_button"
+            android:layout_width="190dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="52dp"
+            android:background="@color/colorSecondary"
+            android:text="@string/home_internet_button_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.752"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_title" />
+
+        <Button
+            android:id="@+id/home_wifi_button"
+            android:layout_width="190dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorSecondary"
+            android:text="@string/home_wifi_button_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.752"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_internet_button"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/home_list_button"
+            android:layout_width="190dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorSecondary"
+            android:text="@string/home_list_button_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.249"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_animation_button" />
+
+        <Button
+            android:id="@+id/home_animation_button"
+            android:layout_width="190dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="52dp"
+            android:background="@color/colorSecondary"
+            android:text="@string/home_animation_button_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.249"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_title" />
+
+        <TextView
+            android:id="@+id/home_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:fontFamily="monospace"
+            android:text="@string/home_title_text"
+            android:textColor="@color/colorTextOnPrimary"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/wifi_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wifi_textview_text"
+            android:textColor="@color/colorTextOnPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.686"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_wifi_button"
+            app:layout_constraintVertical_bias="0.222" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
