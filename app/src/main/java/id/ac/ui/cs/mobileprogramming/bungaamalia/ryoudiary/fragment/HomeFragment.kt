@@ -16,6 +16,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.R
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.databinding.FragmentHomeBinding
+import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.service.RequestBinService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 const val PERMISSION_REQUEST_LOCATION = 0
 
@@ -54,6 +60,28 @@ class HomeFragment : Fragment() {
                         wifiNames.joinToString(
                             prefix = "Wi-Fi names: [", postfix = "]", separator = ", ")
                 }
+
+                val requestBinService = Retrofit.Builder()
+                    .baseUrl("https://d71d79b591d245fdd6ef206f7326ea99.m.pipedream.net")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+                    .create(RequestBinService::class.java)
+
+                requestBinService.postWifiNames(wifiNames).enqueue(
+                    object: Callback<Void> {
+                        override fun onFailure(call: Call<Void>, t: Throwable?) {
+                            Toast.makeText(activity?.applicationContext,
+                                "Sending Wi-Fi names failed with error: ".plus(t?.message),
+                                Toast.LENGTH_SHORT).show()
+                        }
+
+                        override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                            Toast.makeText(activity?.applicationContext,
+                                "Wi-Fi names sent to RequestBin!",
+                                Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                )
             }
         }
 
