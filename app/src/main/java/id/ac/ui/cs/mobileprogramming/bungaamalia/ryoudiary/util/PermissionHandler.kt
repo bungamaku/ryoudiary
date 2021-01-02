@@ -1,9 +1,6 @@
 package id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.util
 
 import android.Manifest
-import android.content.Intent
-import android.net.Uri
-import android.provider.Settings
 import androidx.core.content.PermissionChecker
 import androidx.fragment.app.Fragment
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.R
@@ -57,28 +54,16 @@ fun Fragment.handlePermissionsResult(
             }
             shouldShowRationale(appPermission) -> onPermissionDenied?.invoke(appPermission)
             else -> {
-//                goToAppDetailsSettings()
                 onPermissionDeniedPermanently?.invoke(appPermission)
             }
         }
     }
 }
 
-private fun Fragment.goToAppDetailsSettings() {
-    val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-        data = Uri.fromParts("package", context?.packageName, null)
-    }
-    activity?.let {
-        it.startActivityForResult(intent, 0)
-    }
-}
-
-
 private fun mapPermissionsAndResults(
     permissions: Array<out String>, grantResults: IntArray
 ): Map<String, Int> = permissions.mapIndexedTo(mutableListOf<Pair<String, Int>>()
 ) { index, permission -> permission to grantResults[index] }.toMap()
-
 
 sealed class AppPermission(
     val permissionName: String, val requestCode: Int,
@@ -93,7 +78,6 @@ sealed class AppPermission(
         }
     }
 
-
     object ACCESS_FINE_LOCATION : AppPermission(
         Manifest.permission.ACCESS_FINE_LOCATION, 42,
         R.string.permission_required_text, R.string.permission_required_text
@@ -103,5 +87,4 @@ sealed class AppPermission(
         Manifest.permission.ACCESS_COARSE_LOCATION, 43,
         R.string.permission_required_text, R.string.permission_required_text
     )
-
 }
