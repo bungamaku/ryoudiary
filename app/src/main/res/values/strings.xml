@@ -20,4 +20,5 @@
     <string name="home_countdown_button_text">Countdown</string>
     <string name="home_wifi_button_text">Scan Wi-Fi</string>
     <string name="wifi_textview_text" translatable="false" />
+    <string name="permission_required_text">Sorry, permissions are required!</string>
 </resources>

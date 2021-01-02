@@ -1,32 +1,40 @@
 package id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.fragment
 
+import android.Manifest
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.PackageManager
 import android.net.wifi.WifiManager
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.R
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.databinding.FragmentHomeBinding
 import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.service.RequestBinService
+import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.util.AppPermission
+import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.util.handlePermission
+import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.util.handlePermissionsResult
+import id.ac.ui.cs.mobileprogramming.bungaamalia.ryoudiary.util.requestPermission
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val PERMISSION_REQUEST_LOCATION = 0
-
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
+    private var accessFineLocationGranted = false
+    private var accessCoarseLocationGranted = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -90,15 +98,58 @@ class HomeFragment : Fragment() {
         activity?.applicationContext?.registerReceiver(wifiScanReceiver, intentFilter)
 
         binding.homeWifiButton.setOnClickListener {
-            val success = wifiManager.startScan()
-            if (success) {
-                Toast.makeText(activity?.applicationContext,
-                    "Scanning for Wi-Fi, loading...", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(activity?.applicationContext,
-                    "Wi-Fi scanning failed, please try again.", Toast.LENGTH_SHORT).show()
+            handlePermission(
+                AppPermission.ACCESS_FINE_LOCATION,
+                onGranted = {
+                    accessFineLocationGranted = true
+                },
+                onDenied = {
+                    requestPermission(AppPermission.ACCESS_FINE_LOCATION)
+                },
+                onRationaleNeeded = {
+                    requestPermission(AppPermission.ACCESS_FINE_LOCATION)
+                }
+            )
+            handlePermission(
+                AppPermission.ACCESS_COARSE_LOCATION,
+                onGranted = {
+                    accessCoarseLocationGranted = true
+                },
+                onDenied = {
+                    requestPermission(AppPermission.ACCESS_COARSE_LOCATION)
+                },
+                onRationaleNeeded = {
+                    requestPermission(AppPermission.ACCESS_COARSE_LOCATION)
+                }
+            )
+            if (accessFineLocationGranted && accessCoarseLocationGranted) {
+                val success = wifiManager.startScan()
+                if (success) {
+                    Toast.makeText(activity?.applicationContext,
+                        "Scanning for Wi-Fi, loading...", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(activity?.applicationContext,
+                        "Wi-Fi scanning failed, please try again.", Toast.LENGTH_SHORT).show()
+                }
             }
         }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        handlePermissionsResult(requestCode, permissions, grantResults,
+            onPermissionGranted = {
+                Toast.makeText(activity?.applicationContext,
+                    "Permission granted!", Toast.LENGTH_SHORT).show()
+            },
+            onPermissionDenied = {
+                Toast.makeText(activity?.applicationContext,
+                    "Permission denied!", Toast.LENGTH_SHORT).show()
+            }
+        )
     }
 
 }
